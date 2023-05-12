@@ -150,54 +150,54 @@ paths:
       deprecated: false
       security: []
   
-  # /records/{email}/{description:}:
-  #   delete:
-  #     summary: Delete a user
-  #     description: Delete a user from the Criminal Records
-  #     parameters:
-  #       - name: email
-  #         in: path
-  #         description: Email of the user in the record
-  #         required: true
-  #         schema:
-  #           type: string
-  #       - name: description
-  #         in: path
-  #         description: Description of the record to be deleted
-  #         required: true
-  #         schema:
-  #           type: string
-  #     responses:
-  #       '200':
-  #         description: OK
-  #         content:
-  #           application/json:
-  #             schema:
-  #               type: object
-  #               properties:
-  #                 status:
-  #                   type: string
-  #                 description:
-  #                   type: string
+  /records/{email}/{description:}:
+    delete:
+      summary: Delete a user
+      description: Delete a user from the Criminal Records
+      parameters:
+        - name: email
+          in: path
+          description: Email of the user in the record
+          required: true
+          schema:
+            type: string
+        - name: description
+          in: path
+          description: Description of the record to be deleted
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  description:
+                    type: string
 
-  #       '404':
-  #         description: Not Found
-  #         content:
-  #           application/json:
-  #             schema:
-  #               type: object
-  #               properties:
-  #                 status:
-  #                   type: string
-  #                 description:
-  #                   type: string
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  description:
+                    type: string
 
-  #       '500':
-  #         description: Internal Server Error
-  #         content:
-  #           text/plain:
-  #             schema:
-  #               type: string
+        '500':
+          description: Internal Server Error
+          content:
+            text/plain:
+              schema:
+                type: string
 
-  #     deprecated: false
-  #     security: []
+      deprecated: false
+      security: []
