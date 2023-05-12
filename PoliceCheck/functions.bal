@@ -6,7 +6,7 @@ configurable string password = ?;
 configurable string databaseName = ?;
 configurable string collection = ?;
 
-final mongodb:Client mongoClient = check new ({connection: {url: string `mongodb+srv://${username}:${password}@cluster0.gsbt2kz.mongodb.net/`}});
+final mongodb:Client mongoClient = check new ({connection: {url: string `mongodb+srv://${username}:${password}@gramacheckcluster.used77d.mongodb.net/`}});
 
 public type CrimeRecord record {|
     string email;
