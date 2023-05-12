@@ -33,7 +33,7 @@ isolated function addRecord(CrimeRecord userData, http:Caller caller) returns er
         response.setJsonPayload({status:"success", description:"Crime record has been added successfully"});
     } else {
         int updatedDocsCount = check mongoClient->update({"$set":{severity:userData.severity}},collection,databaseName,({email:userData.email, description:userData.description}));
-        response.statusCode = 201;
+        response.statusCode = 200;
         response.setJsonPayload({status:"success", description:"Crime Record has been updated successfully"});
     }
 
