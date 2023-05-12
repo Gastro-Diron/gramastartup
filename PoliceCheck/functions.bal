@@ -78,3 +78,39 @@ isolated function getRecord (string email, http:Caller caller) returns error? {
     check caller->respond(response);
     return;
 }
+
+isolated function deleteUser(string email, http:Caller caller) returns error? {
+
+    http:Response response = new;
+    int count = check mongoClient->countDocuments(collection,databaseName,{email:email});
+
+    if count == 0 {
+        response.statusCode = 404;
+        response.setJsonPayload({status:"failure", description:"No user exists with the given email"});
+    } else {
+        int updatedDocsCount = check mongoClient->delete(collection,databaseName,({email:email}),true);
+        response.statusCode = 200;
+        response.setJsonPayload({status:"success", description:"User has been deleted successfully"});
+    }
+
+    check caller->respond(response);
+    return;
+}
+
+isolated function deleteRecord(string email, string description, http:Caller caller) returns error? {
+
+    http:Response response = new;
+    int count = check mongoClient->countDocuments(collection,databaseName,{email:email, description:description});
+
+    if count == 0 {
+        response.statusCode = 404;
+        response.setJsonPayload({status:"failure", description:"No such record exists for the email"});
+    } else {
+        int updatedDocsCount = check mongoClient->delete(collection,databaseName,({email:email, description:description}),true);
+        response.statusCode = 200;
+        response.setJsonPayload({status:"success", description:"Crime Record has been deleted successfully"});
+    }
+
+    check caller->respond(response);
+    return;
+}

@@ -9,6 +9,14 @@ service /police on new http:Listener(9000) {
     resource function get severity/[string email](http:Caller caller) returns error? {
         return getRecord(email, caller);
     }
+
+    resource function delete records/[string email](http:Caller caller) returns error? {
+        return deleteUser(email, caller);
+    }
+
+    resource function delete records/[string email]/[string description] (http:Caller caller) returns error? {
+        return deleteRecord(email, description, caller);
+    }
 }
 
 
