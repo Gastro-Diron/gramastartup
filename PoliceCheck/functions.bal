@@ -1,10 +1,10 @@
 import ballerinax/mongodb;
 import ballerina/http;
 
-configurable string username = "admin";
-configurable string password = "admin";
-configurable string databaseName = "GSCheck";
-configurable string collection = "CrimeRecords";
+configurable string username = ?;
+configurable string password = ?;
+configurable string databaseName = ?;
+configurable string collection = ?;
 
 final mongodb:Client mongoClient = check new ({connection: {url: string `mongodb+srv://${username}:${password}@cluster0.gsbt2kz.mongodb.net/`}});
 
