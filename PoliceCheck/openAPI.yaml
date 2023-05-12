@@ -150,7 +150,7 @@ paths:
       deprecated: false
       security: []
   
-  /records/{email}/{description:}:
+  /records/{email}/{description}:
     delete:
       summary: Delete a user
       description: Delete a user from the Criminal Records
