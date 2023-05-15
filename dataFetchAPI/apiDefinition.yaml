@@ -1,0 +1,195 @@
+openapi: "3.0.0"
+info:
+  title: dataFetch
+  version: 1.0.0
+paths:
+  /users/{email}:
+    get:
+      summary: Get a user
+      description: Get a user according to the email address
+      parameters:
+        - name: email
+          in: path
+          description: Email of the user in the database
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  description:
+                    type: string
+                  user:
+                    type: object
+
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  description:
+                    type: string
+
+        '500':
+          description: Internal Server Error
+          content:
+            text/plain:
+              schema:
+                type: string
+
+      deprecated: false
+      security: []
+
+  /documents:
+    post:
+      summary: Create a user
+      description: Create a user in the database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - email
+              properties:
+                document_id:
+                  type: string
+                document_type:
+                  type: string
+                email:
+                  type: string
+                status:
+                  type: string
+                grama_sevaka_id:
+                  type: string
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  description:
+                    type: string
+
+        '500':
+          description: Internal Server Error
+          content:
+            text/plain:
+              schema:
+                type: string
+
+      deprecated: false
+      security: []
+
+  /records/{email}:
+    delete:
+      summary: Delete a user
+      description: Delete a user from the Criminal Records
+      parameters:
+        - name: email
+          in: path
+          description: Email of the user in the record
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  description:
+                    type: string
+
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  description:
+                    type: string
+
+        '500':
+          description: Internal Server Error
+          content:
+            text/plain:
+              schema:
+                type: string
+
+      deprecated: false
+      security: []
+  
+  /records/{email}/{description}:
+    delete:
+      summary: Delete a user
+      description: Delete a user from the Criminal Records
+      parameters:
+        - name: email
+          in: path
+          description: Email of the user in the record
+          required: true
+          schema:
+            type: string
+        - name: description
+          in: path
+          description: Description of the record to be deleted
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  description:
+                    type: string
+
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  description:
+                    type: string
+
+        '500':
+          description: Internal Server Error
+          content:
+            text/plain:
+              schema:
+                type: string
+
+      deprecated: false
+      security: []
